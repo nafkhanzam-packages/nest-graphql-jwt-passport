@@ -1,29 +1,47 @@
-import { DynamicModule, Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
-import { PassportModule } from '@nestjs/passport';
-import { createJwtStrategy } from '.';
-
-interface GraphqlJwtAuthOptions {
-  Class: new (...args: any[]) => any;
-  jwtSecret: string;
-}
+import { DynamicModule, Module } from "@nestjs/common";
+import { PassportModule } from "@nestjs/passport";
+import {
+  GraphqlJwtAuthPassportAsyncOptions,
+  GraphqlJwtAuthPassportOptions,
+  GraphqlJwtAuthStrategy,
+  GRAPHQL_JWT_AUTH_MODULE_OPTIONS,
+} from ".";
 
 @Module({})
 export class GraphqlJwtAuthModule {
-  static register(options: GraphqlJwtAuthOptions): DynamicModule {
+  static register(options: GraphqlJwtAuthPassportOptions): DynamicModule {
     return {
       module: GraphqlJwtAuthModule,
       imports: [
-        JwtModule.register({
-          secret: options.jwtSecret,
-        }),
         PassportModule.register({
-          defaultStrategy: 'jwt',
-          property: 'user',
+          defaultStrategy: "jwt",
+          property: "user",
           session: false,
         }),
       ],
-      providers: [createJwtStrategy(options.Class, options.jwtSecret)],
+      providers: [GraphqlJwtAuthStrategy],
+    };
+  }
+
+  static registerAsync(
+    options: GraphqlJwtAuthPassportAsyncOptions,
+  ): DynamicModule {
+    const optionProvider = {
+      provide: GRAPHQL_JWT_AUTH_MODULE_OPTIONS,
+      useFactory: options.useFactory,
+      inject: options.inject,
+    };
+    return {
+      module: GraphqlJwtAuthModule,
+      imports: [
+        PassportModule.register({
+          defaultStrategy: "jwt",
+          property: "user",
+          session: false,
+        }),
+      ],
+      exports: [GRAPHQL_JWT_AUTH_MODULE_OPTIONS],
+      providers: [optionProvider, GraphqlJwtAuthStrategy],
     };
   }
 }

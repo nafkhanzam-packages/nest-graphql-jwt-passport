@@ -1,6 +1,6 @@
 {
   "name": "@nafkhanzam/nest-graphql-jwt-passport",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "private": false,
@@ -19,7 +19,6 @@
     "@nestjs/common": "^8.1.2",
     "@nestjs/core": "^8.1.2",
     "@nestjs/graphql": "^9.1.1",
-    "@nestjs/jwt": "^8.0.0",
     "@nestjs/passport": "^8.0.1",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
