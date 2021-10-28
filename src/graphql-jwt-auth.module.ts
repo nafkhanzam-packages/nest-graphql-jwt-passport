@@ -43,6 +43,7 @@ export class GraphqlJwtAuthModule {
           property: "user",
           session: false,
         }),
+        ...(options.imports ?? []),
       ],
       exports: [GRAPHQL_JWT_AUTH_MODULE_OPTIONS],
       providers: [optionProvider, GraphqlJwtAuthStrategy],
