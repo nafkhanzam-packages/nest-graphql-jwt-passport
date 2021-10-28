@@ -1,6 +1,6 @@
 {
   "name": "@nafkhanzam/nest-graphql-jwt-passport",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "private": false,
@@ -12,8 +12,7 @@
   "license": "MIT",
   "scripts": {
     "prepublish": "pnpm build",
-    "build": "tsc",
-    "patch": "pnpm version --patch"
+    "build": "tsc"
   },
   "dependencies": {
     "@nestjs/common": "^8.1.2",

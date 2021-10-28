@@ -10,6 +10,10 @@ import {
 @Module({})
 export class GraphqlJwtAuthModule {
   static register(options: GraphqlJwtAuthPassportOptions): DynamicModule {
+    const optionProvider = {
+      provide: GRAPHQL_JWT_AUTH_MODULE_OPTIONS,
+      useValue: options,
+    };
     return {
       module: GraphqlJwtAuthModule,
       imports: [
@@ -19,7 +23,7 @@ export class GraphqlJwtAuthModule {
           session: false,
         }),
       ],
-      providers: [GraphqlJwtAuthStrategy],
+      providers: [optionProvider, GraphqlJwtAuthStrategy],
     };
   }
 
