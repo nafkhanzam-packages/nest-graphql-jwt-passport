@@ -1,6 +1,6 @@
 {
   "name": "@nafkhanzam/nest-graphql-jwt-passport",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "private": false,
@@ -11,7 +11,7 @@
   "author": "nafkhanzam <nafkhanalzamzami@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prepublish": "pnpm build",
+    "prepublish": "nz gen-exports && pnpm build",
     "build": "tsc"
   },
   "dependencies": {
@@ -21,10 +21,12 @@
     "@nestjs/passport": "^8.0.1",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
+    "jwks-rsa": "^2.0.5",
     "passport-jwt": "^4.0.0",
     "typescript": "^4.4.4"
   },
   "devDependencies": {
+    "@nafkhanzam/nz-cli": "^0.0.23",
     "@types/express": "^4.17.13",
     "@types/passport-jwt": "^3.0.6"
   }

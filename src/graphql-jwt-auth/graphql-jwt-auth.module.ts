@@ -1,11 +1,11 @@
 import { DynamicModule, Module } from "@nestjs/common";
 import { PassportModule } from "@nestjs/passport";
+import { GraphqlJwtAuthStrategy } from "..";
 import {
   GraphqlJwtAuthPassportAsyncOptions,
   GraphqlJwtAuthPassportOptions,
-  GraphqlJwtAuthStrategy,
   GRAPHQL_JWT_AUTH_MODULE_OPTIONS,
-} from ".";
+} from "./interfaces";
 
 @Module({})
 export class GraphqlJwtAuthModule {
