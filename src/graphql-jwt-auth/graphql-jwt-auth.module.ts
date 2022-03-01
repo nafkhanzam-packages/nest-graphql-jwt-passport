@@ -23,6 +23,7 @@ export class GraphqlJwtAuthModule {
           session: false,
         }),
       ],
+      exports: [GRAPHQL_JWT_AUTH_MODULE_OPTIONS, GraphqlJwtAuthStrategy],
       providers: [optionProvider, GraphqlJwtAuthStrategy],
     };
   }
@@ -45,7 +46,7 @@ export class GraphqlJwtAuthModule {
         }),
         ...(options.imports ?? []),
       ],
-      exports: [GRAPHQL_JWT_AUTH_MODULE_OPTIONS],
+      exports: [GRAPHQL_JWT_AUTH_MODULE_OPTIONS, GraphqlJwtAuthStrategy],
       providers: [optionProvider, GraphqlJwtAuthStrategy],
     };
   }
